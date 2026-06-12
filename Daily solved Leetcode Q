@@ -272,3 +272,41 @@ class Solution:
                 else:
                     right -= 1
         return result
+
+#  383. Ransom Note
+
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        count = {}
+
+        for ch in magazine:
+            count[ch] = count.get(ch,0)+1
+
+        for ch in ransomNote:
+            if ch not in count or count[ch] == 0:
+                return False
+            count[ch] -=1
+        return True
+        
+
+#   169. Majority Element
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        count = {}
+        for n in nums:
+            count[n] = count.get(n,0) +1
+        for n in count:
+            if count[n] > len(nums)/2:
+                return n
+
+#  349. Intersection of Two Arrays
+
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        s1 = set(nums1)
+        result = set()
+        for n in nums2:
+            if n in s1:
+                result.add(n)
+        return list(result)
