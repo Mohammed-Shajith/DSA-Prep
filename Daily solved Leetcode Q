@@ -442,3 +442,23 @@ class Solution:
             else:
                 right = mid -1
         return False
+
+#   69. Sqrt(x)
+
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        left = 1
+        right  = x
+        answer = 0
+        while left<= right:
+            mid = (left + right)//2
+            square = mid*mid
+            if square == x:
+                return mid
+            elif square < x:
+                left = mid +1
+                answer = mid
+            else:
+                right = mid -1
+                
+        return answer
