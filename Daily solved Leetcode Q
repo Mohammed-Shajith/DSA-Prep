@@ -514,3 +514,41 @@ class Solution:
             prev = current
             current = next_node
         return prev
+
+#   21. Merge Two Sorted Lists
+
+lass Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        tail = dummy
+        p1 = list1
+        p2 = list2
+        while p1 and p2:
+            if p1.val < p2.val:
+                tail.next = p1
+                p1 = p1.next
+                tail = tail.next
+            else:
+                tail.next = p2
+                p2 = p2.next
+                tail = tail.next
+        if p1:
+                tail.next = p1
+        if p2:
+                tail.next = p2
+        return dummy.next
+
+#  203. Remove Linked List Elements
+
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head
+        current = dummy
+        while current.next:
+
+            if current.next.val == val:
+                current.next = current.next.next
+            else:
+                current =current.next
+        return dummy.next
