@@ -716,3 +716,28 @@ class Solution:
                 left += 1
             result = max(result, right - left + 1 )
         return result
+
+# 567. Permutation in String
+
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        if len(s1) > len(s2):
+            return False
+        freq1 = {}
+        freq2 = {}
+        for ch in s1:
+            freq1[ch] = freq1.get(ch, 0) + 1
+        for ch in s2[:len(s1)]:
+            freq2[ch] = freq2.get(ch, 0) + 1
+        if freq1 == freq2:
+            return True
+        left = 0
+        for right in range(len(s1), len(s2)):
+            freq2[s2[right]] = freq2.get(s2[right], 0) + 1
+            freq2[s2[left]] -= 1
+            if freq2[s2[left]] == 0:
+                freq2.pop(s2[left])
+            left += 1
+            if freq1 == freq2:
+                return True
+        return False
